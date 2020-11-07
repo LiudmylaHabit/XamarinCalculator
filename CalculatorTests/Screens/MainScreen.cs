@@ -29,7 +29,7 @@ namespace CalculatorTests.Screens
         public Query btnMinus = x => x.Marked("-");
         public Query btnMultiply = x => x.Marked("x");
         public Query btnDivide = x => x.Marked("÷");
-        public Query btnEquel = x => x.Marked("=");       
+        public Query btnEquel = x => x.Marked("=");
 
         public static IApp App => AppInitializer.App;
 
@@ -43,12 +43,12 @@ namespace CalculatorTests.Screens
             App.Tap(btnOne);
             return this;
         }
-        
+
         public MainScreen TapOnTwo()
         {
             App.Tap(btnTwo);
             return this;
-        }        
+        }
 
         public MainScreen TapOnThree()
         {
@@ -131,8 +131,8 @@ namespace CalculatorTests.Screens
         public string GetTextFromField()
         {
             return App.Query(textField)[0].Text.Trim();
-        }    
-        
+        }
+
         public MainScreen TapOnOperator(string sign)
         {
             Query btn = btnPlus;
@@ -152,7 +152,7 @@ namespace CalculatorTests.Screens
                     {
                         btn = btnDivide;
                         break;
-                    }            
+                    }
             }
             App.Tap(btn);
             return this;
@@ -176,6 +176,67 @@ namespace CalculatorTests.Screens
                     break;
             }
             return this;
+        }
+
+        public MainScreen TapOnButton(string symbol)
+        {
+            switch (symbol)
+            {
+                case "1":
+                    App.Tap(btnOne);
+                    return this;
+                case "2":
+                    App.Tap(btnTwo);
+                    return this;
+                case "3":
+                    App.Tap(btnThree);
+                    return this;
+                case "4":
+                    App.Tap(btnFour);
+                    return this;
+                case "5":
+                    App.Tap(btnFive);
+                    return this;
+                case "6":
+                    App.Tap(btnSix);
+                    return this;
+                case "7":
+                    App.Tap(btnSeven);
+                    return this;
+                case "8":
+                    App.Tap(btnEight);
+                    return this;
+                case "9":
+                    App.Tap(btnNine);
+                    return this;
+                case "0":
+                    App.Tap(btnZero);
+                    return this;
+                case "+":
+                    App.Tap(btnPlus);
+                    return this;
+                case "-":
+                    App.Tap(btnMinus);
+                    return this;
+                case "*":
+                    App.Tap(btnMultiply);
+                    return this;
+                case "/":
+                    App.Tap(btnDivide);
+                    return this;
+                case ".":
+                    App.Tap(btnComma);
+                    return this;
+                default:
+                    return this;
+            }
+        }
+        public string CalcViewText
+        {
+            get
+            {
+                return App.Query(textField)[0].Text.Trim();
+            }
         }
     }
 }
